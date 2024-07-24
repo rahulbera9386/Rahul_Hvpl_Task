@@ -14,6 +14,9 @@ const sheet = read.Sheets[sheetName];
 const data = xlsx.utils.sheet_to_json(sheet);
 //console.log(data);
 
+
+
+//Transforming Data
 const transformData=(data)=>{
   const result =[];
   const customerMap =new Map();
@@ -76,6 +79,8 @@ const transformData=(data)=>{
 const transformedData=transformData(data);
 //console.log(JSON.stringify(transformedData,null,2));
 
+
+//Posting Data to API
 const pushDataToAPI=async(dataApi)=>{
   try {
     const response=await axios.post(
@@ -94,6 +99,7 @@ const pushDataToAPI=async(dataApi)=>{
     console.error("Failure:", err.message);
   }
 };
+//Calling the POST API
 pushDataToAPI(transformedData);
 
 app.listen(PORT,() => {
