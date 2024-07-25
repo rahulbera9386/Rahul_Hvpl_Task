@@ -77,6 +77,7 @@ const transformData=(data)=>{
   return result;
 };
 const transformedData=transformData(data);
+//This Log Is Giving The Expected OutPut As Given Output JSON Format(You Can Log This To Show The Output)
 //console.log(JSON.stringify(transformedData,null,2));
 
 
@@ -85,7 +86,7 @@ const pushDataToAPI=async(dataApi)=>{
   try {
     const response=await axios.post(
       "https://stage.myhealthvectors.com/testserver/receive-report",
-      dataApi,
+      JSON.stringify(dataApi),
       {
         headers: {
           "Content-Type": "application/json",
